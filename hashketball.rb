@@ -1,7 +1,7 @@
 # Write your code here!
 require 'pry'
 def game_hash
-  hash = {
+  hash = { 
     :home => {
       :team_name => "Brooklyn Nets",
       :colors => ["Black","White"],
@@ -211,6 +211,48 @@ def big_shoe_rebounds
   end
 end
 
+def most_points_scored
+  highest_score = 0 
+  game_hash.each do |home_away, team_info|
+    i = 0 
+    max = 0 
+    while i < team_info[:players].length
+      if  team_info[:players][i][:points] > max
+         max = team_info[:players][i][:points]
+         highest_score = team_info[:players][i][:player_name] 
+      end 
+     i += 1 
+    end
+  end
+  return highest_score
+end
 
+def winning_team 
+  home_scores = 0 
+  away_scores = 0
+  i = 0 
+  while i< game_hash[:home][:players].length
+  home_scores += game_hash[:home][:players][i][:points]
+  i +=1
+  end
+  while i< game_hash[:away][:players].length
+  away_scores += game_hash[:away][:players][i][:points]
+  i +=1
+  end
+  if home_scores > away_scores
+    return game_hash[:home][:team_name]
+  else 
+    return game_hash[:away][:team_name]
+  end
+end
 
+def player_with_longest_name
+  
+end 
+  
+  
+  
+  
+  
+  
 
